@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Football Tournament DB Entity", "Football Tournament DB Entity\Football Tournament DB Entity.csproj", "{D13E4A54-8A1B-4A76-B9CD-E128C72E88BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootBallTournament.DAL", "FootBallTournament.DAL\FootBallTournament.DAL.csproj", "{4E39CD6D-7D00-4A09-B6F6-CC355C8268C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D13E4A54-8A1B-4A76-B9CD-E128C72E88BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D13E4A54-8A1B-4A76-B9CD-E128C72E88BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D13E4A54-8A1B-4A76-B9CD-E128C72E88BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D13E4A54-8A1B-4A76-B9CD-E128C72E88BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E39CD6D-7D00-4A09-B6F6-CC355C8268C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E39CD6D-7D00-4A09-B6F6-CC355C8268C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E39CD6D-7D00-4A09-B6F6-CC355C8268C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E39CD6D-7D00-4A09-B6F6-CC355C8268C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {01602C9E-1124-4FC1-9E6C-4B5EBA7790D9}
+	EndGlobalSection
+EndGlobal
