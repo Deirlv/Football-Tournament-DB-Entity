@@ -1,4 +1,4 @@
-﻿namespace FootBallTournament.DAL
+﻿namespace FootBallTournament.DAL.Entities
 {
     public class Standing
     {
@@ -17,5 +17,6 @@
         public int Goals { get; set; }
 
         public int GoalsMissed { get; set; }
+
     }
 }

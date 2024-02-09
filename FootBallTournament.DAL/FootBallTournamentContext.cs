@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FootBallTournament.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace FootBallTournament.DAL
 {
