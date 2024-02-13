@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FootBallTournament.DAL.StandingsRepository
+namespace FootBallTournament.DAL.Repository
 {
     public class StandingsRepository : IStandingsRepository
     {

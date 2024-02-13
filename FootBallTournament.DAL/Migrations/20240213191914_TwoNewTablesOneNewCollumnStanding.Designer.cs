@@ -4,6 +4,7 @@ using FootBallTournament.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootBallTournament.DAL.Migrations
 {
     [DbContext(typeof(FootBallTournamentContext))]
-    partial class FootBallTournamentContextModelSnapshot : ModelSnapshot
+    [Migration("20240213191914_TwoNewTablesOneNewCollumnStanding")]
+    partial class TwoNewTablesOneNewCollumnStanding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

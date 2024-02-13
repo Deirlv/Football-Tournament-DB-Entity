@@ -2,8 +2,9 @@
 using FootBallTournament.DAL;
 using FootBallTournament.DAL.Entities;
 using FootBallTournament.DAL.Service;
-using FootBallTournament.DAL.StandingsRepository;
+using FootBallTournament.DAL.Repository;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -13,14 +14,9 @@ namespace Football_Tournament_DB_Entity
     {
         static void Main(string[] args)
         {
-            IServiceCollection services = new ServiceCollection();
-            services.AddSingleton<DbContext, FootBallTournamentContext>();
-            services.AddScoped<IStandingsRepository, StandingsRepository>();
-            services.AddScoped<StandingsService>();
 
-            var serviceProvider = services.BuildServiceProvider();
-
-            var standingsService = serviceProvider.GetService<StandingsService>();
+            var standingsService = new StandingsService(new FootBallTournamentContext());
+            
 
             while (true)
             {

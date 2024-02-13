@@ -18,5 +18,7 @@
 
         public int GoalsMissed { get; set; }
 
+        public List<Player>? players { get; set; }
+
     }
 }

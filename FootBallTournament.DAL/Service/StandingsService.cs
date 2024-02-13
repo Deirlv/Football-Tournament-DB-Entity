@@ -1,5 +1,5 @@
 ﻿using FootBallTournament.DAL.Entities;
-using FootBallTournament.DAL.StandingsRepository;
+using FootBallTournament.DAL.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +10,11 @@ namespace FootBallTournament.DAL.Service
 {
     public class StandingsService
     {
-        private readonly IStandingsRepository _standingsRepository;
+        private readonly StandingsRepository _standingsRepository;
 
-        public StandingsService(IStandingsRepository standingsRepository)
+        public StandingsService(FootBallTournamentContext context)
         {
-            _standingsRepository = standingsRepository;
+            _standingsRepository = new StandingsRepository(context);
         }
 
         public bool AddStanding(Standing standing)
