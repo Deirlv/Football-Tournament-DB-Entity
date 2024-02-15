@@ -22,27 +22,30 @@ namespace FootBallTournament.DAL.Repository
             return _dbContext.Set<Standing>().Find(id);
         }
 
-        public void Add(Standing standing)
+        public void Add(object standing)
         {
-            _dbContext.Set<Standing>().Add(standing);
+            _dbContext.Add(standing);
             _dbContext.SaveChanges();
         }
 
-        public void Update(Standing standing)
+        public void Update(object standing)
         {
             _dbContext.Entry(standing).State = EntityState.Modified;
             _dbContext.SaveChanges();
         }
 
-        public void Delete(Standing standing)
+        public void Delete(object standing)
         {
-            _dbContext.Set<Standing>().Remove(standing);
+            _dbContext.Remove(standing);
             _dbContext.SaveChanges();
         }
 
-        public List<Standing> GetAll()
+        public List<object> GetAll()
         {
-            return _dbContext.Set<Standing>().ToList();
+            return new List<object>(); // це просто щоб помилки не було
+
+            //ось тут як? Set<object> не дає написати
+            //return _dbContext.Set<object>.ToList();
         }
     }
 }

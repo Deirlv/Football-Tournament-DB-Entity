@@ -6,9 +6,13 @@ namespace FootBallTournament.DAL.Entities
     {
         public int Id { get; set; }
 
-        public Standing Team1 { get; set; }
+        public int Team1Id { get; set; }
 
-        public Standing Team2 { get; set; }
+        public virtual Standing Team1 { get; set; }
+
+        public int Team2Id { get; set; }
+
+        public virtual Standing Team2 { get; set; }
 
         public int Team1Goals { get; set; }
 

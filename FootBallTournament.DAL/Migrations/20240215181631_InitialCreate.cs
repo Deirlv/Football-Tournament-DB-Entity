@@ -5,10 +5,29 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FootBallTournament.DAL.Migrations
 {
-    public partial class TwoNewTablesOneNewCollumnStanding : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Standings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TeamName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeamCity = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    VictoriesCount = table.Column<int>(type: "int", nullable: false),
+                    LosesCount = table.Column<int>(type: "int", nullable: false),
+                    DrawGamesCount = table.Column<int>(type: "int", nullable: false),
+                    Goals = table.Column<int>(type: "int", nullable: false),
+                    GoalsMissed = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Standings", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Matches",
                 columns: table => new
@@ -28,14 +47,12 @@ namespace FootBallTournament.DAL.Migrations
                         name: "FK_Matches_Standings_Team1Id",
                         column: x => x.Team1Id,
                         principalTable: "Standings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Matches_Standings_Team2Id",
                         column: x => x.Team2Id,
                         principalTable: "Standings",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -84,6 +101,9 @@ namespace FootBallTournament.DAL.Migrations
 
             migrationBuilder.DropTable(
                 name: "Players");
+
+            migrationBuilder.DropTable(
+                name: "Standings");
         }
     }
 }

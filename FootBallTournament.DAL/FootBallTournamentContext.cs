@@ -20,5 +20,21 @@ namespace FootBallTournament.DAL
 
             optionsBuilder.UseSqlServer(connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Match>()
+                .HasOne(m => m.Team1)
+                .WithMany()
+                .HasForeignKey(k => k.Team1Id)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Match>()
+                .HasOne(m => m.Team2)
+                .WithMany()
+                .HasForeignKey(k => k.Team2Id)
+                .OnDelete(DeleteBehavior.NoAction);
+        }
+
     }
 }

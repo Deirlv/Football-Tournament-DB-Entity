@@ -10,9 +10,9 @@ namespace FootBallTournament.DAL.Repository
     public interface IStandingsRepository
     {
         Standing GetById(int id);
-        void Add(Standing standings);
-        void Update(Standing standings);
-        void Delete(Standing standings);
+        void Add(object standings);
+        void Update(object standings);
+        void Delete(object standings);
         List<Standing> GetAll();
     }
 }

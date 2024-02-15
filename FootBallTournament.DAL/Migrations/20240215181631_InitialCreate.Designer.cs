@@ -4,6 +4,7 @@ using FootBallTournament.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootBallTournament.DAL.Migrations
 {
     [DbContext(typeof(FootBallTournamentContext))]
-    partial class FootBallTournamentContextModelSnapshot : ModelSnapshot
+    [Migration("20240215181631_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,9 +35,6 @@ namespace FootBallTournament.DAL.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("StandingId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Team1Goals")
                         .HasColumnType("int");
 
@@ -49,8 +48,6 @@ namespace FootBallTournament.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("StandingId");
 
                     b.HasIndex("Team1Id");
 
@@ -134,10 +131,6 @@ namespace FootBallTournament.DAL.Migrations
 
             modelBuilder.Entity("FootBallTournament.DAL.Entities.Match", b =>
                 {
-                    b.HasOne("FootBallTournament.DAL.Entities.Standing", null)
-                        .WithMany("Matches")
-                        .HasForeignKey("StandingId");
-
                     b.HasOne("FootBallTournament.DAL.Entities.Standing", "Team1")
                         .WithMany()
                         .HasForeignKey("Team1Id")
@@ -166,8 +159,6 @@ namespace FootBallTournament.DAL.Migrations
 
             modelBuilder.Entity("FootBallTournament.DAL.Entities.Standing", b =>
                 {
-                    b.Navigation("Matches");
-
                     b.Navigation("Players");
                 });
 #pragma warning restore 612, 618

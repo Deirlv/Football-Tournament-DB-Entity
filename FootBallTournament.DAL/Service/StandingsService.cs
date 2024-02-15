@@ -12,24 +12,19 @@ namespace FootBallTournament.DAL.Service
     {
         private readonly StandingsRepository _standingsRepository;
 
-        public StandingsService(FootBallTournamentContext context)
+        public StandingsService()
         {
-            _standingsRepository = new StandingsRepository(context);
+            _standingsRepository = new StandingsRepository(new FootBallTournamentContext());
         }
 
         public bool AddStanding(Standing standing)
         {
-            bool is_unique = IsUnique(standing);
-
-            if (is_unique)
+            if (IsUnique(standing))
             {
                 _standingsRepository.Add(standing);
                 return true;
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public void RemoveStanding(Standing standing)
@@ -126,6 +121,26 @@ namespace FootBallTournament.DAL.Service
         {
             return _standingsRepository.GetAll().OrderByDescending(s => s.GoalsMissed).FirstOrDefault();
         }
+
+        public Dictionary<string, int> GetTeamGoalDifference()
+        {
+            var goal_difference = new Dictionary<string,int>();
+
+            var teams = _standingsRepository.GetAll();
+
+            foreach (var team in teams)
+            {
+                goal_difference.Add(team.TeamName, team.Goals - team.GoalsMissed);
+            }
+
+            return goal_difference;
+        }
+
+        public Match GetMatchById(int matchId)
+        {
+            return _matchRepository.GetById(matchId); // Припустимо, що у вас є метод GetById() в репозиторії матчів
+        }
+
 
     }
 }

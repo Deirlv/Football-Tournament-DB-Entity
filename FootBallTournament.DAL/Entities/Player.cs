@@ -14,6 +14,6 @@ namespace FootBallTournament.DAL.Entities
 
         public string Position { get; set; }
 
-        public Standing? Team { get; set; }
+        public virtual Standing? Team { get; set; }
     }
 }

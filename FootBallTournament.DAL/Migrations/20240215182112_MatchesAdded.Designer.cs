@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootBallTournament.DAL.Migrations
 {
     [DbContext(typeof(FootBallTournamentContext))]
-    [Migration("20240213191914_TwoNewTablesOneNewCollumnStanding")]
-    partial class TwoNewTablesOneNewCollumnStanding
+    [Migration("20240215182112_MatchesAdded")]
+    partial class MatchesAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace FootBallTournament.DAL.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("StandingId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Team1Goals")
                         .HasColumnType("int");
 
@@ -48,6 +51,8 @@ namespace FootBallTournament.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StandingId");
 
                     b.HasIndex("Team1Id");
 
@@ -131,16 +136,20 @@ namespace FootBallTournament.DAL.Migrations
 
             modelBuilder.Entity("FootBallTournament.DAL.Entities.Match", b =>
                 {
+                    b.HasOne("FootBallTournament.DAL.Entities.Standing", null)
+                        .WithMany("Matches")
+                        .HasForeignKey("StandingId");
+
                     b.HasOne("FootBallTournament.DAL.Entities.Standing", "Team1")
                         .WithMany()
                         .HasForeignKey("Team1Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FootBallTournament.DAL.Entities.Standing", "Team2")
                         .WithMany()
                         .HasForeignKey("Team2Id")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Team1");
@@ -151,7 +160,7 @@ namespace FootBallTournament.DAL.Migrations
             modelBuilder.Entity("FootBallTournament.DAL.Entities.Player", b =>
                 {
                     b.HasOne("FootBallTournament.DAL.Entities.Standing", "Team")
-                        .WithMany("players")
+                        .WithMany("Players")
                         .HasForeignKey("TeamId");
 
                     b.Navigation("Team");
@@ -159,7 +168,9 @@ namespace FootBallTournament.DAL.Migrations
 
             modelBuilder.Entity("FootBallTournament.DAL.Entities.Standing", b =>
                 {
-                    b.Navigation("players");
+                    b.Navigation("Matches");
+
+                    b.Navigation("Players");
                 });
 #pragma warning restore 612, 618
         }
