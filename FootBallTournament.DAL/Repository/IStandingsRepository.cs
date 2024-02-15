@@ -13,6 +13,6 @@ namespace FootBallTournament.DAL.Repository
         void Add(object standings);
         void Update(object standings);
         void Delete(object standings);
-        List<Standing> GetAll();
+        List<object> GetAll();
     }
 }

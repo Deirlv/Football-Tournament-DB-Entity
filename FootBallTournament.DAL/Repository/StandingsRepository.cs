@@ -44,7 +44,7 @@ namespace FootBallTournament.DAL.Repository
         {
             return new List<object>(); // це просто щоб помилки не було
 
-            //ось тут як? Set<object> не дає написати
+            //ось тут як? Set<object> не дає написати. він чекає TEntity
             //return _dbContext.Set<object>.ToList();
         }
     }
