@@ -18,7 +18,7 @@
 
         public int GoalsMissed { get; set; }
 
-        public virtual List<Player> Players { get; set; }
+        public virtual List<Player>? Players { get; set; }
 
         public virtual List<Match>? Matches { get; set; }
 

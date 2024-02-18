@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,10 +18,10 @@ namespace FootBallTournament.DAL.Repository
             _dbContext = dbContext;
         }
 
-        public Standing? GetById(int id)
+        public TEntity? GetById<TEntity>(int id) where TEntity : class
         {
-            return _dbContext.Set<Standing>().Find(id);
-        }
+            return _dbContext.Set<TEntity>().Find(id);
+        } 
 
         public void Add(object standing)
         {
@@ -40,12 +41,14 @@ namespace FootBallTournament.DAL.Repository
             _dbContext.SaveChanges();
         }
 
-        public List<object> GetAll()
+        public List<TEntity> GetAll<TEntity>() where TEntity : class
         {
-            return new List<object>(); // це просто щоб помилки не було
+            return _dbContext.Set<TEntity>().ToList();
+        }
 
-            //ось тут як? Set<object> не дає написати. він чекає TEntity
-            //return _dbContext.Set<object>.ToList();
+        public List<Match> GetAllMatches()
+        {
+            return _dbContext.Set<Match>().Include(m => m.Team1).Include(m => m.Team2).ToList();
         }
     }
 }
