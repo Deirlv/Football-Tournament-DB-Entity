@@ -1,5 +1,7 @@
 ﻿
 
+using System.ComponentModel.DataAnnotations;
+
 namespace FootBallTournament.DAL.Entities
 {
     public class Match
@@ -18,6 +20,7 @@ namespace FootBallTournament.DAL.Entities
 
         public int Team2Goals { get; set; }
 
+        [Required]
         public DateTime Date { get; set; }
 
     }

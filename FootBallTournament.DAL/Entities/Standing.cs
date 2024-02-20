@@ -1,9 +1,12 @@
-﻿namespace FootBallTournament.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FootBallTournament.DAL.Entities
 {
     public class Standing
     {
         public int Id { get; set; }
 
+        [Required]
         public string TeamName { get; set; }
 
         public string TeamCity { get; set; }
